@@ -26,6 +26,7 @@ namespace LocalMax
             int localMax;
             int numberLeft;
             int numberRight;
+            int lastIndex = numbers.Length - 1;
 
             bool isLocalMax = false;
 
@@ -52,9 +53,9 @@ namespace LocalMax
                 }
             }
 
-            if (numbers[numbers.Length - 1] > numbers[numbers.Length - 2])
+            if (numbers[lastIndex] > numbers[lastIndex - 1])
             {
-                localMax = numbers[numbers.Length - 1];
+                localMax = numbers[lastIndex];
 
                 Console.Write(localMax + " ");
             }
