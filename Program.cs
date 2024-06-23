@@ -23,7 +23,7 @@ namespace LocalMax
 
             Console.WriteLine();
 
-            int localMax = int.MinValue;
+            int localMax;
             int numberLeft;
             int numberRight;
 
@@ -42,11 +42,6 @@ namespace LocalMax
             {
                 numberLeft = numbers[i - 1];
                 numberRight = numbers[i + 1];
-
-                if (i == numbers.Length - 1)
-                {
-                    numberRight = int.MinValue;
-                }
 
                 if (numbers[i] > numberLeft && numbers[i] > numberRight)
                 {
