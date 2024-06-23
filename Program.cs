@@ -39,7 +39,7 @@ namespace LocalMax
                 Console.Write(localMax + " ");
             }
 
-            for (int i = 1; i < numbers.Length - 1; i++)
+            for (int i = 1; i < lastIndex; i++)
             {
                 numberLeft = numbers[i - 1];
                 numberRight = numbers[i + 1];
