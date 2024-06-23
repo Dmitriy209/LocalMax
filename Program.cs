@@ -27,7 +27,7 @@ namespace LocalMax
 
             Console.WriteLine();
 
-            int localMax = 0;
+            int localMax = int.MinValue;
             int numberLeft;
             int numberRight;
 
