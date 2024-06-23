@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocalMax
 {
@@ -12,17 +8,17 @@ namespace LocalMax
         {
             Random random = new Random();
 
-            int lowLimitRandom = 1;
+            int lowLimitRandom = -9;
             int highLimitRandom = 9;
 
-            int[] array = new int[30];
+            int[] numbers = new int[30];
 
             Console.WriteLine("Исходная матрица:");
 
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < numbers.Length; i++)
             {
-                array[i] = random.Next(lowLimitRandom, highLimitRandom + 1);
-                Console.Write(array[i] + " ");
+                numbers[i] = random.Next(lowLimitRandom, highLimitRandom + 1);
+                Console.Write(numbers[i] + " ");
             }
 
             Console.WriteLine();
@@ -35,33 +31,37 @@ namespace LocalMax
 
             Console.WriteLine("Все локальные максимумы:");
 
-            for (int i = 0; i < array.Length; i++)
+            if (numbers[0] > numbers[1])
             {
-                if (i == 0)
+                localMax = numbers[0];
+
+                Console.Write(localMax + " ");
+            }
+
+            for (int i = 1; i < numbers.Length - 1; i++)
+            {
+                numberLeft = numbers[i - 1];
+                numberRight = numbers[i + 1];
+
+                if (i == numbers.Length - 1)
                 {
-                    numberLeft = 0;
-                }
-                else
-                {
-                    numberLeft = array[i - 1];
+                    numberRight = int.MinValue;
                 }
 
-                if (i == array.Length - 1)
+                if (numbers[i] > numberLeft && numbers[i] > numberRight)
                 {
-                    numberRight = 0;
-                }
-                else
-                {
-                    numberRight = array[i + 1];
-                }
-
-                if (array[i] > numberLeft && array[i] > numberRight)
-                {
-                    localMax = array[i];
+                    localMax = numbers[i];
                     Console.Write(localMax + " ");
 
                     isLocalMax = true;
                 }
+            }
+
+            if (numbers[numbers.Length - 1] > numbers[numbers.Length - 2])
+            {
+                localMax = numbers[numbers.Length - 1];
+
+                Console.Write(localMax + " ");
             }
 
             if (isLocalMax == false)
